@@ -1,0 +1,27 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main  # adjust branch name as needed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # specify the operating system for the job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # action to checkout the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # action to set up Python environment
+        with:
+          python-version: '3.11.9'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+             python -m pip install --upgrade pip
+             pip install pytest
+
+      - name: Run tests
+        run: pytest  # command to run your tests
